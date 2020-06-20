@@ -23,6 +23,18 @@ class Calendar extends Component {
         return lastDayOfMonth
     }
 
+    getMonthDays() {
+        const { date } = this.state
+        let monthDays = []
+        const noDaysInMonth = date.daysInMonth()
+        for (let day = 1; day <= noDaysInMonth; day++) {
+            monthDays.push(
+                <td key={day}>{day}</td>
+            )
+        }
+        return monthDays
+    }
+
     renderWeekdays() {
         const { days } = this.state
         return days.map(day => {
