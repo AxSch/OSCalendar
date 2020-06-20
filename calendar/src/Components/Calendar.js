@@ -29,10 +29,18 @@ class Calendar extends Component {
         const { date } = this.state
         let monthDays = []
         const noDaysInMonth = date.daysInMonth()
+        const today = Number(date.format("DD"))
+
         for (let day = 1; day <= noDaysInMonth; day++) {
-            monthDays.push(
-                <td key={day}>{day}</td>
-            )
+            if (day === today) {
+                monthDays.push(
+                    <td className="bg-gray-500 text-black" key={day}>{day}</td>
+                )
+            } else {
+                monthDays.push(
+                    <td key={day}>{day}</td>
+                )
+            }
         }
         return monthDays
     }
