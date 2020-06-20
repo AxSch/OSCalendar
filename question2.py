@@ -59,6 +59,19 @@ class Grid():
         grid = [[0 for x in range(self.dimensions)] for y in range(self.dimensions)]
         self.grid = grid
     
+    def set_pizzeria_on_grid(self):
+        counter = 1
+        for pizzeria in self.pizzerias:
+            self.create()
+            x = pizzeria['coords'][0] - 1
+            y = pizzeria['coords'][1] - 1
+            self.grid[x][y] = 1
+            self.calculate_pizzeria_delivery_range_XY(pizzeria, x, y)
+            self.calculate_pizzeria_delivery_range_diagonal(pizzeria, x, y)
+            self.grids.append(self.grid)
+        return self.format_grids(), np.max(self.format_grids())
+    
+    
 
 if __name__ == '__main__':
     if len(test_input[0]) < 2 or len(test_input[0]) > 2:
