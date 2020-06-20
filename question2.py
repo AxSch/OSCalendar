@@ -71,6 +71,16 @@ class Grid():
             self.grids.append(self.grid)
         return self.format_grids(), np.max(self.format_grids())
     
+    def calculate_pizzeria_delivery_range_XY(self, pizzeria, x, y):
+        for step in range(1, pizzeria['distance']  + 1):
+            if (x + step) < self.dimensions:
+                self.grid[x + step][y] = 1
+            if (x - step) >= 0:
+                self.grid[x - step][y] = 1
+            if (y + step) < self.dimensions:
+                self.grid[x][y + step] = 1
+            if (y - step) >= 0:
+                self.grid[x][y - step] = 1
     
 
 if __name__ == '__main__':
