@@ -35,6 +35,17 @@ class Calendar extends Component {
         return monthDays
     }
 
+    getCalendarGaps() {
+        let gaps = []
+        const firstDay = this.getFirstDayOfMonth()
+        for (let i = 0; i < firstDay; i++) {
+            gaps.push(
+                <td>{" "}</td>
+            )
+        }
+        return gaps
+    }
+
     renderWeekdays() {
         const { days } = this.state
         return days.map(day => {
@@ -48,7 +59,8 @@ class Calendar extends Component {
 
     renderMonth() {
         const calendarDays = this.getMonthDays()
-        const calendarMonth = [...calendarDays]
+        const calendarGaps = this.getCalendarGaps()
+        const calendarMonth = [...calendarGaps, ...calendarDays]
     
         let rows = []
         let cells = []
