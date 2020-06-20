@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import moment from 'moment'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 
 class Calendar extends Component {
@@ -87,6 +89,10 @@ class Calendar extends Component {
         const { date } = this.state
         return (
             <div className="absolute top-150">
+                <div className="w-full bg-black p-3 flex items-center justify-between rounded-sm rounded-b-none">
+                    <h2 className="text-white pl-2">_.asterisk</h2>
+                    <FontAwesomeIcon className="text-white" icon={faTimes} />
+                </div>
                 <div className="w-full max-w-md bg-black p-4 rounded-sm rounded-t-none">
                     <div className="flex justify-center text-white">
                         {date.format('MMM YYYY')}
