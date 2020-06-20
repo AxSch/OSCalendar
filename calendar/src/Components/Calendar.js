@@ -46,6 +46,31 @@ class Calendar extends Component {
         })
     }
 
+    renderMonth() {
+        const calendarDays = this.getMonthDays()
+        const calendarMonth = [...calendarDays]
+    
+        let rows = []
+        let cells = []
+    
+        calendarMonth.forEach((row, key) => {
+            if (key % 7 !== 0) {
+                cells.push(row)
+            } else {
+                rows.push(cells)
+                cells = []
+                cells.push(row)
+            }
+            if (key === calendarMonth.length - 1) {
+                rows.push(cells)
+            }
+        })
+    
+        return rows.map((day, key) => {
+            return <tr className="text-white text-center">{day}</tr>
+        })
+    }
+
     render() {
         const { date } = this.state
         return (
@@ -61,6 +86,7 @@ class Calendar extends Component {
                                     {this.renderWeekdays()}
                                 </tr>
                             </thead>
+                            <tbody>{this.renderMonth()}</tbody>
                         </table>
                     </div>
                 </div>
