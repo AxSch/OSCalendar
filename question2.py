@@ -82,6 +82,17 @@ class Grid():
             if (y - step) >= 0:
                 self.grid[x][y - step] = 1
     
+    def calculate_pizzeria_delivery_range_diagonal(self, pizzeria, x, y):
+        for step in range(1, pizzeria['distance']):
+            if (x + step < self.dimensions) and (y + step < self.dimensions):
+                self.grid[x + step][y + step] = 1
+            if (x - step >= 0) and (y - step >= 0):
+                self.grid[x - step][y - step] = 1 
+            if (x - step >= 0) and (y + step < self.dimensions):
+                self.grid[x - step][y + step] = 1 
+            if (x + step < self.dimensions) and (y - step >= 0):
+                self.grid[x + step][y - step] = 1 
+    
 
 if __name__ == '__main__':
     if len(test_input[0]) < 2 or len(test_input[0]) > 2:
