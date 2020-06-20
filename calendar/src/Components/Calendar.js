@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import moment from 'moment'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faTimes, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 
 class Calendar extends Component {
@@ -63,10 +63,10 @@ class Calendar extends Component {
         const calendarDays = this.getMonthDays()
         const calendarGaps = this.getCalendarGaps()
         const calendarMonth = [...calendarGaps, ...calendarDays]
-    
+
         let rows = []
         let cells = []
-    
+
         calendarMonth.forEach((row, key) => {
             if (key % 7 !== 0) {
                 cells.push(row)
@@ -79,7 +79,7 @@ class Calendar extends Component {
                 rows.push(cells)
             }
         })
-    
+
         return rows.map((day, key) => {
             return <tr className="text-white text-center">{day}</tr>
         })
@@ -94,6 +94,11 @@ class Calendar extends Component {
                     <FontAwesomeIcon className="text-white" icon={faTimes} />
                 </div>
                 <div className="w-full max-w-md bg-black p-4 rounded-sm rounded-t-none">
+                    <div className="flex text-white items-center">
+                        <FontAwesomeIcon className="text-lime-green" icon={faArrowRight} />
+                        <p className="pl-2 text-xl text-cold-blue">~ </p>
+                        <p className="pl-2">cal</p>
+                    </div>
                     <div className="flex justify-center text-white">
                         {date.format('MMM YYYY')}
                     </div>
