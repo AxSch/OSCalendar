@@ -11,6 +11,18 @@ class Calendar extends Component {
         }
     }
 
+    getFirstDayOfMonth() {
+        const { date } = this.state
+        const firstDayOfMonth = moment(date).startOf('month').format('DD')
+        return firstDayOfMonth
+    }
+
+    getLastDayOfMonth() {
+        const { date } = this.state
+        const lastDayOfMonth = moment(date).endOf('month').format('DD')
+        return lastDayOfMonth
+    }
+
     renderWeekdays() {
         const { days } = this.state
         return days.map(day => {
