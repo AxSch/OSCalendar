@@ -1,3 +1,6 @@
+import numpy as np
+
+
 test_input = [
     [5,2],
     [3,3,2],
@@ -92,6 +95,12 @@ class Grid():
                 self.grid[x - step][y + step] = 1 
             if (x + step < self.dimensions) and (y - step >= 0):
                 self.grid[x + step][y - step] = 1 
+
+    def format_grids(self):
+        prev_grid = np.zeros((self.dimensions, self.dimensions))
+        for grid in self.grids:
+            prev_grid += np.array(np.flip(grid, 0))
+        return prev_grid
     
 
 if __name__ == '__main__':
@@ -102,4 +111,5 @@ if __name__ == '__main__':
     pizzerias = set_pizzeria(no_of_pizzerias, test_input)
     grid = Grid(dimensions, no_of_pizzerias, pizzerias)
     grid.create()
-    print(no_of_pizzerias, dimensions)
+    final_grid, maximum_pizza_selection = grid.set_pizzeria_on_grid()
+    print(f'grid: \n{final_grid}\n', f'max pizza selection: {int(maximum_pizza_selection)}')
