@@ -6,9 +6,7 @@ then run the following:
 
 # Question 2
 
-## Start at root of the project
-
-Use pipenv to install the relevant dependancies
+Use pipenv to install the relevant dependancies from pipfile.lock
 
 activate environment by running:
 ```pipenv shell```
